@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getAllRecipes } from '../../redux/actions'
 import './landingPage.css'
 
-function LandingPage() {
+function LandingPage(props) {
   return (
     <div className='landing__fondo'>
         <div className='landing__contenedor'>
@@ -14,7 +16,7 @@ function LandingPage() {
             </div>
             <Link to="/home">
                 <button className='landing__btn' type="submit"
-                // onClick={()=>{props.getAllCharacter()}}
+                onClick={()=>{props.getAllRecipes()}}
                 >Get Started
                 </button>
             </Link>
@@ -23,4 +25,10 @@ function LandingPage() {
   )
 }
 
-export default LandingPage
+function mapDispatchToProps(dispatch){
+  return {
+    getAllRecipes:()=> dispatch(getAllRecipes())
+  }
+}
+
+export default connect(null,mapDispatchToProps)(LandingPage)
