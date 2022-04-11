@@ -1,6 +1,74 @@
 .navbar__container {
+    background-color: var(--verde);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem
+    padding: 1rem;
+}
+
+.navbar__title {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.navbar__underline {
+    height: 0.20rem;
+    width: 2rem;
+    background: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar__search {
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    padding: .3rem;
+    align-items: center;
+    
+}
+.navbar__search input {
+    border:none;
+    width: 20vw;
+}
+
+.navbar__search button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar__link {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar__link:last-child {
+    margin-left: .5rem
+}
+
+@media screen and (min-width: 768px){
+    .navbar__container {
+        padding: 1rem 2rem
+    }
+    .navbar__link:last-child {
+        margin-left: 2rem
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .navbar__container {
+        padding: 1rem 4rem
+    }
+    .navbar__title {
+        font-size: 2rem
+    }
+    .navbar__underline {
+        height: 0.25rem;
+        width: 3rem;
+    }
+    .navbar__link:last-child {
+        margin-left: 4rem
+    }
 }
