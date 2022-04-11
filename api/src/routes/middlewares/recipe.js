@@ -28,11 +28,6 @@ router.post('/', async (req,res)=>{
     }
 })
 
-//trabajando en una funcion para encontrar varias palabras en un string
-const findWord = (title,words)=>{
-    words.forEach()
-
-}
 
 router.get('/', async(req,res)=>{
     const {name} = req.query;
