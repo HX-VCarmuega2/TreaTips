@@ -1,0 +1,78 @@
+.landing__fondo {
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../img/food.jpg');
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.landing__contenedor {
+    background-color: rgba(255,255,255,0.5);
+    padding:2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing__title {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.landing__underline {
+    height: 0.25rem;
+    width: 5rem;
+    background: var(--verde);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+}
+.landing__description {
+    display: none
+}
+
+.landing__btn {
+    background-color: var(--verde);
+    color: white;
+    font-family: var(--fuente);
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    height: 2.5rem;
+    width: 6.5rem;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px){
+    .landing__description {
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+    .landing__description h3 {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .landing__description p {
+        font-style: italic;
+    }
+
+}
+
+@media screen and (min-width: 1024px){
+    .landing__fondo {
+        justify-content: flex-start;
+    }
+
+    .landing__contenedor {
+        margin-left: 2rem;
+    }
+
+}
