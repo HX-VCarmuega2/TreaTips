@@ -1,7 +1,7 @@
 import { GET_ALL_RECIPES, GET_RECIPES_BY_NAME } from "../actions";
 
 const initialState = {
-    recipes: [],
+    recipes: []
 }
 
 
