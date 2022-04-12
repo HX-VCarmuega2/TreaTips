@@ -1,12 +1,13 @@
 import React from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import { connect } from 'react-redux';
+import Displayer from '../../components/displayer/Displayer';
 
 const HomePage = (props) => {
   return (
     <div>
         <Navbar />
-        {console.log(props.recipes)}
+        <Displayer />
     </div>
   )
 }
