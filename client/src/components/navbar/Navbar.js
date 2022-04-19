@@ -28,7 +28,7 @@ const Navbar = (props) => {
           onChange={(e)=>setWord(e.target.value)} />
         <button 
           type='submit' 
-          onClick={(e)=> handleSubmit()}>
+          onClick={handleSubmit}>
             <img src={lupa} alt="search button"/>
         </button>
       </div>

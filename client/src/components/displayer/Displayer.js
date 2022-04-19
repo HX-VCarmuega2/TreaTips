@@ -1,19 +1,14 @@
 import React from 'react'
 import Display from '../display/Display'
-import { connect } from 'react-redux';
 
-const Displayer = (props) => {
-    return (
-    props.recipes.map((recipe)=>{return(
-        <Display key={recipe.id} recipe={recipe} />
+
+const Displayer = ({recipes}) => {
+    
+  return (
+    recipes.map((recipe)=>{return(
+      <Display key={recipe.id} recipe={recipe} />
     )})
   )
 }
 
-function mapStateToProps(state){
-    return {
-      recipes: state.recipes,
-    };
-    
-  }
-  export default connect(mapStateToProps)(Displayer)
+export default Displayer
