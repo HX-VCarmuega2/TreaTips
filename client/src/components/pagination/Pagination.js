@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { elements } from '../../redux/reducer'
 import { displayRecipes } from '../../redux/actions'
-import Displayer from '../displayer/Displayer'
 import { connect } from 'react-redux';
 
 //Decidir que hacer cuando el current page es negativo o supera la longitud del arreglo.
 
 const Pagination = (props) => {
     const [currentPage,setCurrentPage] = useState(1)
+    
     const pages = Math.ceil(props.recipes.length/elements);
     const buttons = [];
     for(let i=1; i<=pages; i++){
@@ -33,17 +33,11 @@ const Pagination = (props) => {
     }
 
     return (
-      <div>
-        <div>
-          <Displayer recipes={props.recipesToDisplay} />
-        </div>
-        <div>
-          <button onClick={prevClick}>Prev</button>
-          {buttons.map(el=>{return <button key={el} onClick={e=>handleClick(e)}>{el}</button>})}
-          <button onClick={nextClick}>Next</button>
-        </div>
-      </div>
-      
+    <div>
+      <button onClick={prevClick}>Prev</button>
+        {buttons.map(el=>{return <button key={el} onClick={e=>handleClick(e)}>{el}</button>})}
+      <button onClick={nextClick}>Next</button>
+    </div> 
     )
 }
 
