@@ -16,7 +16,7 @@ function generateRecipeFromApi(objeto){
             healthScore,
         };
         if(analyzedInstructions.length > 0){
-            recipe.directions = analyzedInstructions[0].steps.map((steps)=> {return `STEP: ` + steps.step}).toString()
+            recipe.directions = analyzedInstructions[0].steps.map((steps)=> {return steps.step})
         } else {
             recipe.directions="";
         }

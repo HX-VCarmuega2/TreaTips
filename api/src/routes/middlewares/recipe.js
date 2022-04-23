@@ -8,7 +8,7 @@ const diets = require('../controllers/AuxDiet')
 router.post('/', async (req,res)=>{
     const {title, summary, diets, directions,score, healthScore } = req.body;
     if(!title || !summary) return res.status(404).send('Falta enviar datos obligatorios')
-    const stringDirections = directions.map((el,idx)=>{return `STEP: ` + el.step}).toString()
+    const stringDirections = directions.map((el)=>{return el.step + '*'}).toString()
     const newRecipe = {
         title,
         summary,

@@ -4,11 +4,13 @@ import { orderRecipes, filterRecipes, getAllRecipes } from '../../redux/actions'
 
 const Filter = (props) => {
   const diets = [];
+
   props.recipes.forEach(recipe =>{
     recipe.diets.forEach(diet =>{
-      if(!diets.includes(diet)){
-        diets.push(diet)
-      }
+      let newDiet = diet.name;
+        if(!diets.includes(newDiet)){
+          diets.push(newDiet)
+        }
     })
   });
 

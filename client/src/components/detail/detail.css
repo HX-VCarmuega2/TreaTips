@@ -1,0 +1,74 @@
+.detail__container {
+    text-align: center;
+}
+
+.detail__image {
+    width: 100vw;
+}
+
+.detail__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem;   
+}
+.detail__underline {
+    height: 0.20rem;
+    width: 4rem;
+    background: var(--verde);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.detail__summary-container {
+    margin: 1rem
+}
+.detail__subtitle {
+    font-weight: bold;
+    margin: 1rem 0;
+    color: var(--verde);
+    font-size: 1.2rem;
+}
+.detail__summary {
+    text-align: justify;
+}
+
+.detail__summary b {
+    font-weight: bold;
+}
+
+.detail__summary a {
+    text-decoration: none;
+    color: var(--verde);
+    cursor: pointer;
+}
+
+.detail__typesPointsContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem
+}
+
+.detail__typesPointsContainer-individual {
+    width: 40vw;
+    text-align: center;
+}
+.detail__typesPointsContainer li {
+    margin: .5rem 0;
+    font-weight: bold;
+}
+
+.detail__directions-steps {
+    text-align: justify;
+    padding: .5rem;
+    border: dashed 1px var(--verde);
+    margin: .5rem 0
+    
+}
+.detail__p {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.hide {
+    display: none;
+}
