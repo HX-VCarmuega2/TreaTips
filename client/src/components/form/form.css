@@ -1,0 +1,115 @@
+.form {
+    margin: 1rem;
+    width: 90vw; 
+}
+
+.form__title{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+}
+
+.form__label {
+    margin-bottom: 0.8rem;
+    color: var(--verde);
+    font-weight: bold;
+}
+.form__recipeTitle-input {
+    border: none;
+    border-bottom: solid 1px black;
+    margin-bottom: 1rem;
+    padding: .5rem;
+}
+
+.form__recipeSummary-input {
+    margin-bottom: .5rem;
+    border-style: dashed; 
+}
+
+.form__score-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:flex-start;
+    margin-bottom: .5rem;
+    color: var(--verde);
+}
+.width {
+    width: 90vw;
+}
+
+.form__score-container label {
+    font-weight: bold;
+}
+.form__score-InputSpamContainer {
+    display: flex;
+    flex-direction: column;
+}
+.column {
+    flex-direction: column;
+}
+.form__input-number {
+    width: 8vw;
+    margin-left: .3rem;
+    border: none;
+    border-bottom: solid 1px black;
+    margin-bottom: .3rem;
+}
+
+.form__directions-deleteBtn {
+    border: solid 1px var(--verde);
+    border-radius: 5px;
+    background-color: white;
+    color: var(--verde);
+    width: 20vw;
+    height: 1.7rem;
+    cursor: pointer;
+}
+
+.form__directions-addBtn{
+    border: none;
+    background-color: var(--verde);
+    color: white;
+    border-radius: 5px;
+    width: 20vw;
+    height: 1.7rem;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.form__checkbox {
+    margin-bottom: .5rem;
+}
+
+.form__btn {
+    background-color: var(--verde);
+    border: solid 1px var(--verde);
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    height: 2rem;
+    width: 90vw;
+    cursor: pointer;
+}
+.ghost {
+    color: var(--verde);
+    background-color: white;
+}
+.error {
+    border-color: red;
+}
+
+.form__msgErrors {
+    color: red;
+    font-size: .8rem;
+    font-style: italic;
+    margin-bottom: .5rem;
+}
+.align {
+    align-self:flex-end
+}

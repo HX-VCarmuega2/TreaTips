@@ -1,26 +1,27 @@
 const axios = require('axios')
 const { MY_API_KEY } = process.env;
-const { Recipe } = require('../../db.js');
+const { Recipe, Diet } = require('../../db.js');
 
 const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&addRecipeInformation=true&number=2`
 
 function generateRecipeFromApi(objeto){
-    const {id,title,image,summary,diets,dishTypes,spoonacularScore,healthScore,analyzedInstructions} = objeto;
+    const {id,title,image,summary,diets, dishTypes,spoonacularScore,healthScore,analyzedInstructions} = objeto;
         let recipe = {
             id,
             title,
             image,
             summary,
-            diets,
             dishTypes,
             score: spoonacularScore,
             healthScore,
         };
         if(analyzedInstructions.length > 0){
-            recipe.directions=analyzedInstructions[0].steps.map((steps)=> {return steps.step})
+            recipe.directions = analyzedInstructions[0].steps.map((steps)=> {return `STEP: ` + steps.step}).toString()
         } else {
-            recipe.directions=[];
+            recipe.directions="";
         }
+        let diet = diets.map(diet => {return {name:diet}})
+        recipe.diets = diet;
         return recipe;
 }
 
@@ -35,7 +36,14 @@ const getApiRecipes = async() =>{
 }
 
 const getDBRecipes = async () => {
-    const recipes = await Recipe.findAll();
+    const recipes = await Recipe.findAll({
+        include: {
+            model: Diet,
+            through: {
+                attributes: []
+            }
+    }
+});
     return recipes;
 }
 

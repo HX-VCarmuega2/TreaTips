@@ -8,10 +8,10 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-        get(){
-          const rawId = this.getDataValue('id');
-          return  "DB" + rawId;
-        },
+        // get(){
+        //   const rawId = this.getDataValue('id');
+        //   return  "DB" + rawId;
+        // },
     },
     title: {
       type: DataTypes.STRING,

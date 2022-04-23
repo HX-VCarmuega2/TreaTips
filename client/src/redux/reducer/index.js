@@ -1,5 +1,6 @@
 import { DISPLAY_RECIPES, FILTER_RECIPES_BY_DIET, GET_ALL_RECIPES, GET_RECIPES_BY_NAME, ORDER_RECIPES } from "../actions";
 export const elements = 9;
+export const diets = ['gluten free','ketogenic','vegetarian', 'lacto vegetarian','ovo lacto vegetarian','vegan','pescetarian','paleo','primal','low FODMAP','whole30']
 
 const initialState = {
     recipes: [],

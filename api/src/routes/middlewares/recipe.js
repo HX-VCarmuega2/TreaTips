@@ -6,25 +6,34 @@ const router = Router();
 const diets = require('../controllers/AuxDiet')
 
 router.post('/', async (req,res)=>{
-    const {title, summary, diets } = req.body;
+    const {title, summary, diets, directions,score, healthScore } = req.body;
     if(!title || !summary) return res.status(404).send('Falta enviar datos obligatorios')
+    const stringDirections = directions.map((el,idx)=>{return `STEP: ` + el.step}).toString()
+    const newRecipe = {
+        title,
+        summary,
+        score,
+        healthScore,
+        directions: stringDirections
+    }
     try{
-        const recipe = await Recipe.create(req.body);
+        const recipe = await Recipe.create(newRecipe);
         if(diets.length > 0){
             try {
-                const newDiets = diets.map(async(diet)=>{
+                diets.map(async(diet)=>{
                     await Diet.findOrCreate({
                         where:{name:diet}
                     })
+                    recipe.addDiets(diet)
                 })
-                recipe.addDiets(diets) 
+                return res.status(201).json({msg:'Receta creada con éxito'}) 
             } catch (error) {
-                res.json(error) 
+                res.status(404).json({err: error}) 
             }
         }
         res.status(201).json({msg:'Receta creada con éxito'})
     } catch(error){
-        res.status(404).json({error:'Error en alguno de los datos previstos'})
+        res.status(404).json({error: error})
     }
 })
 
