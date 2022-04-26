@@ -1,0 +1,17 @@
+.pagination__container {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination__btn {
+    background-color: var(--verde);
+    border: none;
+    color: white;
+    margin: .3rem;
+    padding: .5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.hide {
+    display: none;
+}
