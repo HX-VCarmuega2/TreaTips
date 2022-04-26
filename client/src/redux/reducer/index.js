@@ -87,7 +87,16 @@ const rootReducer = (state=initialState, action)=>{
             }
 
         case FILTER_RECIPES_BY_DIET:
-            const newState = state.recipes.filter(recipe => {return recipe.diets.includes(action.payload)})    
+            const newState = [];
+            
+            state.recipes.forEach(recipe => {
+                recipe.diets.forEach(diet=>{
+                    if(diet.name === action.payload){
+                        newState.push(recipe)
+                    }
+                })
+            })
+
         return {
                 ...state,
                 recipes: newState,
