@@ -1,0 +1,79 @@
+.filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px #E0E0E0;
+    margin: .5rem .5rem 1rem .5rem
+}
+
+.filter__order-container {
+    display: flex;
+    justify-content: space-between;
+    margin: .5rem;
+}
+
+.filter h4 {
+    font-weight: bold;
+    margin: .5rem 0;
+    cursor: pointer;
+}
+.filter__underline {
+    height: 0.20rem;
+    width: 4rem;
+    background: var(--verde);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filter__order-type {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter__order-btnContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: .3rem;
+}
+
+.filter__btn {
+    background-color: var(--verde);
+    color: white;
+    border: none;
+    padding: .5rem;
+    margin: .5rem 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter__dietsType-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.filter__dietsType-LinksContainer {
+    margin: .5rem 0;
+    text-align: center;
+}
+
+.filter__dietsType{
+    background: none;
+    border: none;
+    margin: .3rem;
+    cursor: pointer;
+}
+
+.filter__dietsType:hover {
+    border-bottom: 1.5px solid var(--verde);
+    cursor: pointer;
+}
+
+.seeAll {
+    width: 30vw;
+    align-self: center;
+}
+
+.hide {
+    display: none;
+}
