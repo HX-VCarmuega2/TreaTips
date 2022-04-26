@@ -1,15 +1,18 @@
+.detail {
+    margin: 0 1rem
+}
 .detail__container {
     text-align: center;
 }
 
 .detail__image {
-    width: 100vw;
+    width: 100%;
 }
 
 .detail__title {
     font-size: 1.5rem;
     font-weight: bold;
-    margin: 1rem;   
+    margin: 1rem 0;   
 }
 .detail__underline {
     height: 0.20rem;
@@ -71,4 +74,49 @@
 
 .hide {
     display: none;
+}
+.show {
+display: block;
+}
+
+@media screen and (min-width: 768px){
+    .detail__titleImgSummary-container {
+        display: flex;
+    }
+    .detail__image {
+        width: 45vw;
+        margin: 0 .5rem;
+    }
+
+    .detail__container {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-evenly;
+    }
+
+    .detail__underline {
+        width: 10rem;
+    }
+
+    .detail__extrainfo-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .detail__typesPointsContainer-individual {
+        width: 20vw
+    }
+}
+@media screen and (min-width: 768px){
+    .detail {
+        margin: 1rem 2rem
+    }
+}
+@media screen and (min-width: 1024px){
+    .detail {
+        margin: 2rem 5rem
+    }
+    .detail__image, .detail__summary-container {
+        margin: 1.5rem 1rem;
+    }
 }
