@@ -1,0 +1,32 @@
+.displayer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: .5rem;
+    padding-top: .5rem;
+}
+
+.displayer__title {
+    font-size: 1.5rem;
+    font-weight: bold;   
+}
+.displayer__underline {
+    height: 0.20rem;
+    width: 4rem;
+    background: var(--verde);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (min-width: 768px){
+    .displayer__display-container{
+        display: grid;
+        grid-template-columns: 30vw 30vw 30vw;
+        gap: 1rem;
+        margin: 1rem;
+    }
+}
