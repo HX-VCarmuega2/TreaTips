@@ -25,6 +25,10 @@ export function validateInput(recipe){
     } else if (recipe.healthScore > 100 || recipe.healthScore < 0){
       errors.healthScore = 'Pick a number betwen 0 and 100'
     }
+
+    if(Array.isArray(recipe.directions)){
+      errors.directions = 'Please save directions before creating the recipe'
+    }
   
     return errors
   }

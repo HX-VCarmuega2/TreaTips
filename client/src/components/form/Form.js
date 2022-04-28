@@ -157,18 +157,25 @@ const Form = () => {
             value={ele.step}
             id={idx} 
             onChange={handleDirectionChange}
-            placeholder={`step ${idx+1}`} 
+            placeholder={`step ${idx+1}: To improve the performance of the site, please avoid using commas when entering directions`} 
             cols="10" 
             rows="5">
           </textarea>
           <button className='form__directions-deleteBtn' id={idx} onClick={removeStep}>Remove</button>
+          
         </div>
-      )): <div>Directions save</div>}
-      {recipe.directions.length < 6 && (
+      )): <div className='form__SaveDirections-msg'>Directions save</div>}
+      <div className='form__AddSaveBtn-container'>
+      {Array.isArray(recipe.directions) && recipe.directions.length < 6 && (
         <button className='form__directions-addBtn' onClick={addTextarea} >
           Add step
         </button>)}
-        <button onClick={stringifyDirections}>Save directions</button>
+        {Array.isArray(recipe.directions) && <button onClick={stringifyDirections} className='form__directions-save'>Save</button>}
+        {errors.directions && (
+            <span className='form__msgErrors'>{errors.directions}</span>
+          )}
+      </div>
+      
       </div>
       
       <div className='container'>
