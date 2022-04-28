@@ -11,8 +11,8 @@ const Detail = (props) => {
     let directions;
 
     if(typeof(recipe.directions) ==='string'){
-      if(recipe.directions.length > 1){
-        directions = recipe.directions.split('*')
+      if(recipe.directions.length > 0){
+        directions = recipe.directions.split(',')
       } else {directions = []}
       
     } else {
@@ -22,6 +22,7 @@ const Detail = (props) => {
   
     return (
     <div className='detail'>
+      {console.log(recipe)}
       <div className='detail__titleImgSummary-container'>
         <div className='detail__container'>
             <img className='detail__image' src={recipe.image ? recipe.image : food} alt={recipe.name} />

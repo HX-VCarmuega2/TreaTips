@@ -4,6 +4,7 @@ import './form.css'
 import { validateInput } from './validation'
 import { URL } from '../../redux/actions'
 import axios from 'axios'
+// import Modal from '../modal/Modal'
 
 const Form = () => {
   const [recipe,setRecipe] = useState({
@@ -18,6 +19,7 @@ const Form = () => {
   const [errors,setErrors] = useState({})
   const [result,setResult] = useState([])
 
+
   function handleSubmit(e){
     e.preventDefault();
     if(Object.keys(errors).length === 0){
@@ -28,7 +30,7 @@ const Form = () => {
       .catch(function(error){
         setResult(error)
       })
-    
+
       setRecipe({
         title: '',
         summary: '',
@@ -71,6 +73,12 @@ const Form = () => {
     const reDirections = [...recipe.directions]
     reDirections.splice(id,1)
     setRecipe({...recipe, directions: reDirections})
+  }
+
+  function stringifyDirections(e){
+    e.preventDefault()
+    let stringDirections = recipe.directions.map(element => {return element.step}).toString()
+    setRecipe({...recipe,directions:stringDirections})
   }
 
   useEffect(()=>{
@@ -141,7 +149,7 @@ const Form = () => {
       <div className='container'>
       <label className='form__label' >Directions:</label>
       
-      {recipe.directions.map((ele,idx)=>(
+      {Array.isArray(recipe.directions) ? recipe.directions.map((ele,idx)=>(
         <div className='container' key={`div${idx}`}>
           <textarea 
             className='form__recipeSummary-input' 
@@ -155,11 +163,12 @@ const Form = () => {
           </textarea>
           <button className='form__directions-deleteBtn' id={idx} onClick={removeStep}>Remove</button>
         </div>
-      ))}
+      )): <div>Directions save</div>}
       {recipe.directions.length < 6 && (
         <button className='form__directions-addBtn' onClick={addTextarea} >
           Add step
         </button>)}
+        <button onClick={stringifyDirections}>Save directions</button>
       </div>
       
       <div className='container'>
@@ -185,6 +194,7 @@ const Form = () => {
       </div>
       
       <input value='Create' className={Object.keys(errors).length > 0 ? 'form__btn ghost' :'form__btn'} type="submit" />
+      {/* {result && <Modal/>} */}
       {result && <span>{result.msg}</span>}
     </form>
   )
