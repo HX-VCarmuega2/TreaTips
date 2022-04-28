@@ -2,7 +2,7 @@ const axios = require('axios')
 const { MY_API_KEY } = process.env;
 const { Recipe, Diet } = require('../../db.js');
 
-const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&addRecipeInformation=true&number=15`
+const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&addRecipeInformation=true&number=2`
 
 function generateRecipeFromApi(objeto){
     const {id,title,image,summary,diets, dishTypes,spoonacularScore,healthScore,analyzedInstructions} = objeto;
@@ -54,7 +54,22 @@ const joinRecipes = async () =>{
     return joinRecipes;
 }
 
+const match = (array,name)=>{
+    const words = name.toLowerCase().split(" ");
+    const filterElements = [];
+    array.forEach(elem => {
+        const title = elem.title.toLowerCase();
+        for(let i=0; i<words.length;i++){
+            if(title.includes(words[i])){
+                filterElements.push(elem);
+                return
+            }
+        }
+    })
+    return filterElements
+}
 
 module.exports = {
-    joinRecipes
+    joinRecipes,
+    match
 }

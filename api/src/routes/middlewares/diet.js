@@ -6,7 +6,7 @@ const router = Router();
 router.get('/', async(req,res)=>{
     let dietsType = await Diet.findAll();
     if(dietsType.length === 0){
-        let diets = ['gluten free', 'ketogenic', 'vegetarian', 'acto vegetarian', 'lacto ovo vegetarian', 'vegan','pescetarian', 'paleo', 'primal', 'low FODMAP','whole30']
+        let diets = ['gluten free', 'ketogenic', 'vegetarian', 'lacto vegetarian', 'lacto ovo vegetarian', 'vegan','pescetarian', 'paleo', 'primal', 'low FODMAP','whole30']
         try {
             diets.map(async(diet)=>{await Diet.create({name: diet})})
             dietsType = await Diet.findAll();
