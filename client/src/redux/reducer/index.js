@@ -1,27 +1,30 @@
-import { DISPLAY_RECIPES, FILTER_RECIPES_BY_DIET, GET_ALL_RECIPES, GET_RECIPES_BY_NAME, ORDER_RECIPES } from "../actions";
+import { DISPLAY_RECIPES, FILTER_RECIPES_BY_DIET, GET_ALL_RECIPES, GET_FAILED, GET_REQUEST, ORDER_RECIPES } from "../actions";
 export const elements = 9;
 export const diets = ['gluten free','ketogenic','vegetarian', 'lacto vegetarian','ovo lacto vegetarian','vegan','pescetarian','paleo','primal','low FODMAP','whole30']
 
 const initialState = {
+    loading: false,
     recipes: [],
-    recipesToDisplay: []
+    recipesToDisplay: [],
+    errors: ''
 }
 
 
 const rootReducer = (state=initialState, action)=>{
     switch (action.type){
+        case GET_REQUEST:
+            return {
+                ...state,
+                loading:true
+            }
         case GET_ALL_RECIPES:
             return {
                 ...state,
+                loading: false,
                 recipes: action.payload,
                 recipesToDisplay: action.payload.slice(0,elements)
               }
-        case GET_RECIPES_BY_NAME:
-            return {
-                ...state,
-                recipes: action.payload,
-                recipesToDisplay: action.payload.slice(0,elements)
-            }
+        
         case DISPLAY_RECIPES:
         const idxEnd = action.payload * elements;
         const idxStart = idxEnd -elements;
@@ -29,6 +32,12 @@ const rootReducer = (state=initialState, action)=>{
         return {
                 ...state,
                 recipesToDisplay: toDisplay
+            }
+        case GET_FAILED:
+            return {
+                ...state,
+                loading: false, 
+                errors: action.payload
             }
         case ORDER_RECIPES:
             if(action.payload === 'A-Z'){
