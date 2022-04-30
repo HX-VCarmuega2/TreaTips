@@ -40,14 +40,14 @@
     justify-content: space-evenly;
     width: 40vw;
 }
-.modal__link {
-    text-decoration: none;
+.modal__btn {
     font-weight: bold;
-    color: var(--verde);
+    color: white;
     cursor: pointer;
-}
-.modal__link:hover {
-    text-decoration: underline;
+    background-color: var(--verde);
+    border: none;
+    border-radius: 5px;
+    height: 1.5rem;
 }
 
 @media screen and (min-width: 1024px){

@@ -1,24 +1,18 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react';
 import './modal.css'
-import success from '../../img/recipeCreated.jpg' 
 
-
-const Modal = ({msg}) => {
+const Modal = ({msg, title, img, closeModal}) => {
 
     return (
     <div className='modal'>
       <div className='modal__container'>
-        <h1 className='modal__title'>Awesome!</h1>
-        <img className='modal__image' src={success} alt={msg} />
+        <h1 className='modal__title'>{title}</h1>
+        <img className='modal__image' src={img} alt={msg} />
         <p className='modal__msg' >{msg}</p>
         <div className='modal__link-container'>
-          <Link to='/home' className='modal__link'>
-            Home
-          </Link>
-          <Link to='/post' className='modal__link'>
-            Create
-          </Link>
+          <button onClick={closeModal} className='modal__btn'>
+            Close
+          </button>
         </div>
         
       </div>
