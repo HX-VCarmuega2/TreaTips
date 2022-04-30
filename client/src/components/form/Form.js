@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import ReactDOM from 'react-dom'
 import { diets } from '../../redux/reducer'
 import './form.css'
 import { validateInput } from './validation'
 import { URL } from '../../redux/actions'
 import axios from 'axios'
+import Modal from '../modal/Modal'
 // import Modal from '../modal/Modal'
 
 const Form = () => {
@@ -25,7 +27,7 @@ const Form = () => {
     if(Object.keys(errors).length === 0){
         axios.post(URL, recipe)
       .then(function(response){
-        setResult(response.data) 
+        setResult(response.data.msg) 
       })
       .catch(function(error){
         setResult(error)
@@ -202,7 +204,7 @@ const Form = () => {
       
       <input value='Create' className={Object.keys(errors).length > 0 ? 'form__btn ghost' :'form__btn'} type="submit" />
       {/* {result && <Modal/>} */}
-      {result && <span>{result.msg}</span>}
+      {result.length > 0 && ReactDOM.createPortal(<Modal msg={result} />, document.querySelector('#portal')) }
     </form>
   )
 }
