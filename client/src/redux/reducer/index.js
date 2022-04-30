@@ -22,7 +22,8 @@ const rootReducer = (state=initialState, action)=>{
                 ...state,
                 loading: false,
                 recipes: action.payload,
-                recipesToDisplay: action.payload.slice(0,elements)
+                recipesToDisplay: action.payload.slice(0,elements),
+                errors:""
               }
         
         case DISPLAY_RECIPES:
