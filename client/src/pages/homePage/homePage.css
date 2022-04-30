@@ -1,0 +1,12 @@
+.loading__container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading__msg{
+    font-size: 2rem;
+    color: var(--verde);
+    font-weight: bold;
+}
