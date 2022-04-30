@@ -1,4 +1,4 @@
-import { DISPLAY_RECIPES, FILTER_RECIPES_BY_DIET, GET_ALL_RECIPES, GET_FAILED, GET_REQUEST, ORDER_RECIPES } from "../actions";
+import { DISPLAY_RECIPES, FILTER_RECIPES_BY_DIET, GET_ALL_RECIPES, GET_REQUEST_FAILED, GET_SEARCH_FAILED, GET_REQUEST, ORDER_RECIPES } from "../actions";
 export const elements = 9;
 export const diets = ['gluten free','ketogenic','vegetarian', 'lacto vegetarian','ovo lacto vegetarian','vegan','pescetarian','paleo','primal','low FODMAP','whole30']
 
@@ -6,7 +6,10 @@ const initialState = {
     loading: false,
     recipes: [],
     recipesToDisplay: [],
-    errors: ''
+    errors: {
+        request: '',
+        search:''
+    }
 }
 
 
@@ -15,7 +18,13 @@ const rootReducer = (state=initialState, action)=>{
         case GET_REQUEST:
             return {
                 ...state,
-                loading:true
+                loading:true,
+                recipes: [],
+                recipesToDisplay: [],
+                errors: {
+                    request: '',
+                    search:''
+                }
             }
         case GET_ALL_RECIPES:
             return {
@@ -23,7 +32,10 @@ const rootReducer = (state=initialState, action)=>{
                 loading: false,
                 recipes: action.payload,
                 recipesToDisplay: action.payload.slice(0,elements),
-                errors:""
+                errors:{
+                    request: '',
+                    search:''
+                }
               }
         
         case DISPLAY_RECIPES:
@@ -34,11 +46,21 @@ const rootReducer = (state=initialState, action)=>{
                 ...state,
                 recipesToDisplay: toDisplay
             }
-        case GET_FAILED:
+        case GET_REQUEST_FAILED:
             return {
                 ...state,
-                loading: false, 
-                errors: action.payload
+                loading: false,
+                recipes: [],
+                recipesToDisplay: [],
+                errors: {...state.errors, request:action.payload}
+            }
+        case GET_SEARCH_FAILED:
+            return {
+                ...state,
+                loading: false,
+                recipes: [],
+                recipesToDisplay: [],
+                errors: {...state.errors, search:action.payload}
             }
         case ORDER_RECIPES:
             if(action.payload === 'A-Z'){

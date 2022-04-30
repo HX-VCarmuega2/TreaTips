@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
 import Display from '../display/Display'
 import Modal from '../modal/Modal';
 import { connect } from 'react-redux';
@@ -20,7 +19,7 @@ const Displayer = (props) => {
   return (
     <div>
       {props.error && modal ? (
-      ReactDOM.createPortal(<Modal title={title} msg={msg} img={notFoundImg} closeModal={closeModal}/>, document.querySelector('#portal'))) : (
+      <Modal title={title} msg={msg} img={notFoundImg} closeModal={closeModal}/>) : (
       <div className={props.recipes.length > 0 ? 'displayer' : 'hide'}>
             <div>
               <h3 className='displayer__title'>Recipes</h3>
@@ -41,7 +40,7 @@ const Displayer = (props) => {
 function mapStateToProps(state){
   return {
     recipes: state.recipesToDisplay,
-    error: state.errors
+    error: state.errors.search
   }; 
 }
 export default connect(mapStateToProps)(Displayer)

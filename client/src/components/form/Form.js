@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom'
 import { diets } from '../../redux/reducer'
 import './form.css'
 import { validateInput } from './validation'
@@ -211,7 +210,7 @@ const Form = () => {
       </div>
       
       <input value='Create' className={Object.keys(errors).length > 0 ? 'form__btn ghost' :'form__btn'} type="submit" />
-      {modal && ReactDOM.createPortal(<Modal title='Awesome!' msg={result} img={success} closeModal={closeModal}/>, document.querySelector('#portal'))}
+      {modal && <Modal title='Awesome!' msg={result} img={success} closeModal={closeModal}/>}
     </form>
   )
 }
