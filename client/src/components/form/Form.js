@@ -6,7 +6,7 @@ import { validateInput } from './validation'
 import { URL } from '../../redux/actions'
 import axios from 'axios'
 import Modal from '../modal/Modal'
-// import Modal from '../modal/Modal'
+import success from '../../img/recipeCreated.jpg'
 
 const Form = () => {
   const [recipe,setRecipe] = useState({
@@ -20,6 +20,7 @@ const Form = () => {
 
   const [errors,setErrors] = useState({})
   const [result,setResult] = useState([])
+  const [modal,setModal] = useState(false)
 
 
   function handleSubmit(e){
@@ -32,6 +33,8 @@ const Form = () => {
       .catch(function(error){
         setResult(error)
       })
+
+      setModal(true)
 
       setRecipe({
         title: '',
@@ -81,6 +84,11 @@ const Form = () => {
     e.preventDefault()
     let stringDirections = recipe.directions.map(element => {return element.step}).toString()
     setRecipe({...recipe,directions:stringDirections})
+  }
+
+  function closeModal(){
+    setModal(false)
+    setResult([])
   }
 
   useEffect(()=>{
@@ -203,8 +211,7 @@ const Form = () => {
       </div>
       
       <input value='Create' className={Object.keys(errors).length > 0 ? 'form__btn ghost' :'form__btn'} type="submit" />
-      {/* {result && <Modal/>} */}
-      {result.length > 0 && ReactDOM.createPortal(<Modal msg={result} />, document.querySelector('#portal')) }
+      {modal && ReactDOM.createPortal(<Modal title='Awesome!' msg={result} img={success} closeModal={closeModal}/>, document.querySelector('#portal'))}
     </form>
   )
 }
