@@ -42,7 +42,8 @@
 .detail__summary a {
     text-decoration: none;
     color: var(--verde);
-    cursor: pointer;
+    cursor: default;
+    pointer-events: none;
 }
 
 .detail__typesPointsContainer {
