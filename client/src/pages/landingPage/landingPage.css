@@ -38,7 +38,6 @@
 
 .landing__btn {
     background-color: var(--verde);
-    color: white;
     font-family: var(--fuente);
     font-size: 1rem;
     border: none;
@@ -46,6 +45,14 @@
     height: 2.5rem;
     width: 6.5rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing__btn a {
+    text-decoration: none;
+    color: white;
 }
 
 @media screen and (min-width: 768px){
