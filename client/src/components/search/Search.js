@@ -3,16 +3,13 @@ import '../navbar/navbar.css'
 import { connect } from 'react-redux';
 import { getRecipesByName } from '../../redux/actions';
 import lupa from '../../img/lupa.png';
-import { useNavigate } from 'react-router-dom';
 
 const Search = (props) => {
     const [word,setWord] = useState('');
-    const navigate = useNavigate()
 
     const handleSubmit = ()=>{
     props.getRecipesByName(word)
     setWord("")
-    navigate('/home')
   }
 
   return (
