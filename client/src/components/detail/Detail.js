@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRecipesById } from '../../redux/actions';
 import './detail.css';
 import food from '../../img/food.jpg'
 
 
-const Detail = (props) => {
-    const {id} = useParams()
-    const recipe = props.recipes.find((recipe)=>{return recipe.id === parseInt(id)});
+const Detail = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(getRecipesById(id))
+  },[dispatch,id]);  
+  
+    // const recipe = props.recipes.find((recipe)=>{return recipe.id === parseInt(id)});
+    const recipe = useSelector((state)=> state.recipeDetail);
+    
     let directions;
 
     if(typeof(recipe.directions) ==='string'){
@@ -18,11 +27,9 @@ const Detail = (props) => {
     } else {
       directions = recipe.directions;
     }
-    
   
     return (
-    <div className='detail'>
-      {console.log(recipe)}
+      <div>{recipe.id ? <div className='detail'>
       <div className='detail__titleImgSummary-container'>
         <div className='detail__container'>
             <img className='detail__image' src={recipe.image ? recipe.image : food} alt={recipe.name} />
@@ -71,8 +78,6 @@ const Detail = (props) => {
           </div>
         </div>
 
-        
-
         <div className='detail__underline'></div>
 
         <div className='detail__summary-container'>
@@ -88,13 +93,11 @@ const Detail = (props) => {
             <span>Directions are not avalible</span>
           </div>)}
         </div>
-    </div>
+    </div>: <div className='loading__container'>
+            <h3 className='loading__msg'>Loading Recipe...</h3>
+          </div> }</div>
+    
   )
 }
 
-function mapStateToProps(state){
-    return {
-      recipes: state.recipesToDisplay
-    }; 
-  }
-  export default connect(mapStateToProps)(Detail)
+export default Detail
