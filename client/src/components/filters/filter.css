@@ -4,7 +4,8 @@
     justify-content: center;
     border-radius: 5px;
     box-shadow: 0 5px 10px #E0E0E0;
-    margin: .5rem .5rem 1rem .5rem
+    margin: .5rem .5rem 1rem .5rem;
+    padding-bottom: 1rem;
 }
 
 .filter__order-container {
@@ -52,9 +53,11 @@
     flex-direction: column;
     align-items: center;
 }
+
 .filter__dietsType-LinksContainer {
     margin: .5rem 0;
     text-align: center;
+    
 }
 
 .filter__dietsType{
@@ -76,4 +79,10 @@
 
 .hide {
     display: none;
+}
+
+@media screen and (min-width: 1024px){
+    .filter {
+        margin: .5rem 5rem 1rem 5rem;
+    }
 }
