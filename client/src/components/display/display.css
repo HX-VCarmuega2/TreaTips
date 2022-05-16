@@ -27,6 +27,7 @@
     font-weight: bold;
     background-color: var(--verde);
     border-radius: 45px 5px 45px 0;
+    color: white;
 }
 .recipe__title {
     text-align: center;
