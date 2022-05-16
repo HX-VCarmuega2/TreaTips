@@ -27,7 +27,7 @@ const Filter = (props) => {
       ...btn,
       [prop]: !btn[prop]})
   }
-  
+
   return (
     <div className='filter' >
 
@@ -65,8 +65,6 @@ const Filter = (props) => {
             <button className='filter__dietsType' onClick={props.getAllRecipes}>See all</button>
         </div>
       </div>
-        
-      
 
     </div>
   )
@@ -74,7 +72,7 @@ const Filter = (props) => {
 
 function mapStateToProps(state){
   return {
-    recipes: state.recipes,
+    recipes: state.recipes
   }; 
 }
 
@@ -82,7 +80,7 @@ function mapDispatchToProps(dispatch){
   return {
       orderRecipes: (way)=> dispatch(orderRecipes(way)),
       filterRecipes: (diet)=> dispatch(filterRecipes(diet)),
-      getAllRecipes: ()=> dispatch(getAllRecipes()),
+      getAllRecipes: ()=> dispatch(getAllRecipes())
   }
 }
 
