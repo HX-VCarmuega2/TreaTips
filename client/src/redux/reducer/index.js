@@ -1,4 +1,4 @@
-import { DISPLAY_RECIPES, FILTER_RECIPES_BY_DIET, GET_ALL_RECIPES, GET_REQUEST_FAILED, GET_SEARCH_FAILED, GET_REQUEST, ORDER_RECIPES } from "../actions";
+import { DISPLAY_RECIPES, FILTER_RECIPES_BY_DIET, GET_ALL_RECIPES, GET_REQUEST_FAILED, GET_SEARCH_FAILED, GET_REQUEST, ORDER_RECIPES, GET_RECIPE_BY_ID } from "../actions";
 export const elements = 9;
 export const diets = ['gluten free','ketogenic','vegetarian', 'lacto vegetarian','ovo lacto vegetarian','vegan','pescetarian','paleo','primal','low FODMAP','whole30']
 
@@ -6,6 +6,7 @@ const initialState = {
     loading: false,
     recipes: [],
     recipesToDisplay: [],
+    recipeDetail:{},
     errors: {
         request: '',
         search:''
@@ -37,6 +38,11 @@ const rootReducer = (state=initialState, action)=>{
                     search:''
                 }
               }
+        case GET_RECIPE_BY_ID:
+            return {
+                ...state,
+                recipeDetail: action.payload,
+            }      
         
         case DISPLAY_RECIPES:
         const idxEnd = action.payload * elements;
@@ -88,7 +94,6 @@ const rootReducer = (state=initialState, action)=>{
                 }
             }
             else if(action.payload === 'MIN'){
-                console.log(state.recipes)
                 const newState = state.recipes.sort((a,b)=>{
                     if(a.healthScore < b.healthScore) return -1;
                     if(a.healthScore > b.healthScore) return 1;

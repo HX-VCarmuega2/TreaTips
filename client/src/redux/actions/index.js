@@ -8,6 +8,7 @@ export const FILTER_RECIPES_BY_DIET = 'FILTER_RECIPES_BY_DIET'
 export const GET_REQUEST_FAILED = 'GET_REQUEST_FAILED'
 export const GET_SEARCH_FAILED = 'GET_SEARCH_FAILED'
 export const GET_REQUEST = 'GET_REQUEST'
+export const GET_RECIPE_BY_ID = 'GET_RECIPE_BY_ID'
 
 const gettingData = ()=> {
     return {
@@ -34,6 +35,12 @@ const getSearchFailed = (error) => {
         payload: error
     }
 }
+const getDetail = (recipe) => {
+    return {
+        type: GET_RECIPE_BY_ID,
+        payload: recipe
+    }
+}
 
 export const getAllRecipes = ()=>{
     return async function(dispatch) {
@@ -57,8 +64,20 @@ export const getRecipesByName = (word) => {
             dispatch(getRecipes(recipes));
         })
         .catch(function(error){
-            dispatch(getSearchFailed(error));
+            dispatch(getSearchFailed("Recipe not found"));
         })
+      };
+}
+
+export const getRecipesById = (id) => {
+    return async function(dispatch) {
+        try {
+            const response = await axios.get(URL + `/${id}`);
+            const recipe = response.data;
+            dispatch(getDetail(recipe));
+        } catch (error) {
+            dispatch(getSearchFailed(error));
+        }
       };
 }
 
