@@ -45,9 +45,13 @@ table {
 
 :root {
   --verde: #30be76;
-  --fuente: 'Nunito Sans', sans-serif;  
+  --fuente: 'Nunito Sans', sans-serif;
+  --gris: #f7f8fa  
 }
 
 body {
   font-family: var(--fuente);
+}
+html {
+	background-color: var(--gris);
 }

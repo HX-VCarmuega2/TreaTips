@@ -251,10 +251,9 @@ const Form = () => {
         <div className="form__container">
           {diets.map((diet, idx) => {
             return (
-              <div key={idx}>
-                <label>{diet}</label>
+              <div key={idx} className="form__checkbox">
+                <label >{diet}</label>
                 <input
-                  className="form__checkbox"
                   name={diet}
                   type="checkbox"
                   value={recipe.diets}
