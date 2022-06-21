@@ -1,3 +1,7 @@
+.container {
+    background-color: var(--gris);
+}
+
 .loading__container{
     height: 100vh;
     display: flex;
