@@ -1,11 +1,5 @@
 .filter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px #E0E0E0;
     margin: .5rem .5rem 1rem .5rem;
-    padding-bottom: 1rem;
 }
 
 .filter__order-container {
@@ -28,53 +22,35 @@
 }
 
 .filter__order-type {
+    width: 10rem;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    margin: .5rem .5rem 1rem .5rem;
 }
 
 .filter__order-btnContainer {
-    display: flex;
-    justify-content: space-evenly;
+    background-color:white;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px #E0E0E0;
+    display: block;
     margin-top: .3rem;
+    position: absolute;
+    width: inherit;
+    top: 115px;
+    z-index: 1
+}
+
+.filter__order-btnContainer button:hover{
+    border-bottom: 1px solid var(--verde);
 }
 
 .filter__btn {
-    background-color: var(--verde);
-    color: white;
+    background-color: transparent;
+    color:  var(--verde);
     border: none;
-    padding: .5rem;
     margin: .5rem 0;
-    border-radius: 5px;
     cursor: pointer;
-}
-
-.filter__dietsType-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.filter__dietsType-LinksContainer {
-    margin: .5rem 0;
-    text-align: center;
-    
-}
-
-.filter__dietsType{
-    background: none;
-    border: none;
-    margin: .3rem;
-    cursor: pointer;
-}
-
-.filter__dietsType:hover {
-    border-bottom: 1.5px solid var(--verde);
-    cursor: pointer;
-}
-
-.seeAll {
-    width: 30vw;
-    align-self: center;
 }
 
 .hide {
@@ -84,5 +60,8 @@
 @media screen and (min-width: 1024px){
     .filter {
         margin: .5rem 5rem 1rem 5rem;
+    }
+    .filter__order-container {
+        justify-content: center;
     }
 }
