@@ -1,7 +1,7 @@
 import React from "react";
 import Detail from "../../components/detail/Detail";
 import Navbar from "../../components/navbar/Navbar";
-import "./detail.css";
+import "./detailPage.css";
 
 const DetailPage = () => {
   return (
