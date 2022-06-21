@@ -1,123 +1,158 @@
 .detail {
-    margin: 0 1rem
+  margin: 1rem; 
 }
+
+.boxShadow {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px #e0e0e0;
+}
+
 .detail__container {
-    text-align: center;
+  text-align: center;
 }
 
 .detail__image {
-    width: 100%;
+  width: 100%;
 }
 
 .detail__title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 1rem 0;   
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
 }
 .detail__underline {
-    height: 0.20rem;
-    width: 4rem;
-    background: var(--verde);
-    margin-left: auto;
-    margin-right: auto;
+  height: 0.2rem;
+  width: 4rem;
+  background: var(--verde);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .detail__summary-container {
-    margin: 1rem
+  margin: 1rem;
+  padding-bottom: 1rem;
 }
+
 .detail__subtitle {
-    font-weight: bold;
-    margin: 1rem 0;
-    color: var(--verde);
-    font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: var(--verde);
+  font-size: 1.4rem;
 }
 .detail__summary {
-    text-align: justify;
+  text-align: justify;
+  font-size: 1.2rem;
 }
 
 .detail__summary b {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .detail__summary a {
-    text-decoration: none;
-    color: var(--verde);
-    cursor: default;
-    pointer-events: none;
+  text-decoration: none;
+  color: var(--verde);
+  cursor: default;
+  pointer-events: none;
 }
 
 .detail__typesPointsContainer {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 1rem
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
 }
 
 .detail__typesPointsContainer-individual {
-    width: 40vw;
-    text-align: center;
+  width: 40vw;
+  text-align: center;
 }
 .detail__typesPointsContainer li {
-    margin: .5rem 0;
-    font-weight: bold;
+  margin: 0.5rem 0;
+  font-weight: bold;
 }
 
 .detail__directions-steps {
-    text-align: justify;
-    padding: .5rem;
-    border: dashed 1px var(--verde);
-    margin: .5rem 0
-    
+  text-align: justify;
+  padding: 0.5rem;
+  border: solid 1px var(--verde);
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
 }
 .detail__p {
-    font-weight: bold;
-    font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 0;
 }
+
+.detail__directions-container {
+    width: 90%;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
 
 .hide {
-    display: none;
+  display: none;
 }
 .show {
-display: block;
+  display: block;
 }
 
-@media screen and (min-width: 768px){
-    .detail__titleImgSummary-container {
-        display: flex;
-    }
-    .detail__image {
-        width: 45vw;
-        margin: 0 .5rem;
-    }
+@media screen and (min-width: 768px) {
 
-    .detail__container {
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: space-evenly;
-    }
+  .detail {
+    margin: 1rem 2rem;
+  }
+  .detail__titleImgSummary-container {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  .detail__image {
+    width: 45vw;
+    margin: 0 0.5rem;
+  }
 
-    .detail__underline {
-        width: 10rem;
-    }
+  .detail__container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+  }
 
-    .detail__extrainfo-container {
-        display: flex;
-        justify-content: center;
-    }
+  .detail__underline {
+    width: 10rem;
+  }
 
-    .detail__typesPointsContainer-individual {
-        width: 20vw
-    }
+  .detail__extrainfo-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .detail__typesPointsContainer-individual {
+    width: 20vw;
+  }
+
+  .detail__directions-container {
+    width: 95%;
+  }
 }
-@media screen and (min-width: 768px){
-    .detail {
-        margin: 1rem 2rem
-    }
-}
-@media screen and (min-width: 1024px){
-    .detail {
-        margin: 2rem 5rem
-    }
-    .detail__image, .detail__summary-container {
-        margin: 1.5rem 1rem;
-    }
+
+@media screen and (min-width: 1024px) {
+  .detail {
+    margin: 2rem 5rem;
+  }
+  .detail__image,
+  .detail__summary-container {
+    margin: 1.5rem 1rem;
+ 
+  }
+  .detail__subtitle {
+    font-size: 1.6rem;
+  }
+
+  .detail__summary, .detail__p , .detail__directions-steps ,.detail__typesPointsContainer li {
+    font-size: 1.4rem;
+  }
+
+  .detail__directions-container {
+    width: 97%;
+  }
 }
