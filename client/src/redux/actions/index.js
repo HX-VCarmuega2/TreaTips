@@ -1,5 +1,5 @@
 import axios from 'axios'
-export const URL = 'http://localhost:3001/recipes'
+export const URL = '/recipes'
 
 export const GET_ALL_RECIPES = 'GET_ALL_RECIPES';
 export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'
