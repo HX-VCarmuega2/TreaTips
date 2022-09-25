@@ -56,7 +56,7 @@ const Filter = (props) => {
     <div className="filter">
       <div
         className={
-          props.recipes.length > 0 ? "filter__order-container" : "hide"
+          recipes.length > 0 ? "filter__order-container" : "hide"
         }
       >
         <div className="filter__order-type">
