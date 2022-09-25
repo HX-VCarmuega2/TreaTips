@@ -9,6 +9,8 @@ export const GET_REQUEST_FAILED = 'GET_REQUEST_FAILED'
 export const GET_SEARCH_FAILED = 'GET_SEARCH_FAILED'
 export const GET_REQUEST = 'GET_REQUEST'
 export const GET_RECIPE_BY_ID = 'GET_RECIPE_BY_ID'
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+export const CLEAN_DETAIL= 'CLEAN_DETAIL'
 
 const gettingData = ()=> {
     return {
@@ -100,5 +102,18 @@ export const filterRecipes = (diet)=>{
     return {
         type: FILTER_RECIPES_BY_DIET,
         payload: diet
+    }
+}
+
+export const setCurrentPage = (page)=>{
+    return {
+        type: SET_CURRENT_PAGE,
+        payload: page
+    }
+}
+
+export const cleanDetail = ()=>{
+    return {
+        type: CLEAN_DETAIL
     }
 }

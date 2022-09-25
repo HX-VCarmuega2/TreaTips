@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { elements } from '../../redux/reducer'
-import { displayRecipes } from '../../redux/actions'
-import { connect } from 'react-redux';
+import { displayRecipes, setCurrentPage } from '../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
 import './pagination.css'
 
-const Pagination = (props) => {
-    const [currentPage,setCurrentPage] = useState(1)
+const Pagination = () => {
+
+  const dispatch= useDispatch()
+
+  const recipes = useSelector(state => state.recipes)
+  // const recipesToDisplay = useSelector(state => state.recipesToDisplay)
+  const currentPage = useSelector(state => state.page)
+  
+
     
-    const pages = Math.ceil(props.recipes.length/elements);
+    const pages = Math.ceil(recipes.length/elements);
     const buttons = [];
     for(let i=1; i<=pages; i++){
         buttons.push(i)
@@ -15,8 +22,8 @@ const Pagination = (props) => {
 
     function handleClick(e){
         const page = parseInt(e.target.innerText);
-        setCurrentPage(page)
-        props.displayRecipes(page)
+        dispatch(setCurrentPage(page))
+        dispatch(displayRecipes(page))
     }
 
     function prevClick(){
@@ -24,8 +31,8 @@ const Pagination = (props) => {
       if(page === 1){
         return;
       } else {
-        setCurrentPage(page-1)
-        props.displayRecipes(page-1) 
+        dispatch(setCurrentPage(page-1))
+        dispatch(displayRecipes(page))
       }
       
     }
@@ -35,8 +42,8 @@ const Pagination = (props) => {
       if(page === pages){
         return
       } else {
-        setCurrentPage(page+1)
-        props.displayRecipes(page+1) 
+        dispatch(setCurrentPage(page+1))
+        dispatch(displayRecipes(page))
       }
       
     }
@@ -51,7 +58,7 @@ const Pagination = (props) => {
     }
 
     return (
-    <div className={props.recipes.length > 0? 'pagination__container' : 'hide'}>
+    <div className={recipes.length > 0? 'pagination__container' : 'hide'}>
       <button 
         className={currentPage === 1? 'hide' :'pagination__btn'}
         onClick={prevClick}>
@@ -75,15 +82,4 @@ const Pagination = (props) => {
     )
 }
 
-function mapStateToProps(state){
-    return {
-      recipes: state.recipes,
-      recipesToDisplay: state.recipesToDisplay
-    }; 
-  }
-function mapDispatchToProps(dispatch){
-    return {
-        displayRecipes: (page)=> dispatch(displayRecipes(page))
-    }
-}
-  export default connect(mapStateToProps,mapDispatchToProps)(Pagination)
+  export default Pagination

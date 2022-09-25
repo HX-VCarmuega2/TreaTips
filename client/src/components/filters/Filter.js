@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
 import {
   orderRecipes,
   filterRecipes,
   getAllRecipes,
+  setCurrentPage,
 } from "../../redux/actions";
 import "./filter.css";
 
 const Filter = (props) => {
+
+  const dispatch = useDispatch();
+  const recipes = useSelector(state=>state.recipes)
   const [btn, setBtn] = useState({
     order: false,
     filter: false,
@@ -15,7 +19,7 @@ const Filter = (props) => {
 
   const diets = [];
 
-  props.recipes.forEach((recipe) => {
+  recipes.forEach((recipe) => {
     recipe.diets.forEach((diet) => {
       let newDiet = diet.name;
       if (!diets.includes(newDiet)) {
@@ -33,17 +37,18 @@ const Filter = (props) => {
 
   function handleClick(e) {
     if (e.target.name === "order") {
-      props.orderRecipes(e.target.value);
+      dispatch(orderRecipes(e.target.value));
       setBtn({
         ...btn,
         [e.target.name]: false,
       });
     } else {
-      props.filterRecipes(e.target.value);
+      dispatch(filterRecipes(e.target.value));
       setBtn({
         ...btn,
         [e.target.name]: false,
       });
+      dispatch(setCurrentPage(1))
     }
   }
 
@@ -128,7 +133,7 @@ const Filter = (props) => {
                 <button
                   className="filter__btn"
                   name="filter"
-                  onClick={props.getAllRecipes}
+                  onClick={()=>dispatch(getAllRecipes())}
                 >
                   See all
                 </button>
@@ -141,18 +146,5 @@ const Filter = (props) => {
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    recipes: state.recipes,
-  };
-}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    orderRecipes: (way) => dispatch(orderRecipes(way)),
-    filterRecipes: (diet) => dispatch(filterRecipes(diet)),
-    getAllRecipes: () => dispatch(getAllRecipes()),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default Filter;

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipesById } from "../../redux/actions";
+import { cleanDetail, getRecipesById } from "../../redux/actions";
 import "./detail.css";
 import food from "../../img/food.jpg";
 
@@ -11,9 +11,11 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(getRecipesById(id));
+    return () => {
+      dispatch(cleanDetail())
+    }
   }, [dispatch, id]);
 
-  // const recipe = props.recipes.find((recipe)=>{return recipe.id === parseInt(id)});
   const recipe = useSelector((state) => state.recipeDetail);
 
   let directions;

@@ -1,4 +1,4 @@
-import { DISPLAY_RECIPES, FILTER_RECIPES_BY_DIET, GET_ALL_RECIPES, GET_REQUEST_FAILED, GET_SEARCH_FAILED, GET_REQUEST, ORDER_RECIPES, GET_RECIPE_BY_ID } from "../actions";
+import { DISPLAY_RECIPES, FILTER_RECIPES_BY_DIET, GET_ALL_RECIPES, GET_REQUEST_FAILED, GET_SEARCH_FAILED, GET_REQUEST, ORDER_RECIPES, GET_RECIPE_BY_ID, SET_CURRENT_PAGE, CLEAN_DETAIL } from "../actions";
 export const elements = 9;
 export const diets = ['gluten free','ketogenic','vegetarian', 'lacto vegetarian','ovo lacto vegetarian','vegan','pescetarian','paleo','primal','low FODMAP','whole30']
 
@@ -10,12 +10,23 @@ const initialState = {
     errors: {
         request: '',
         search:''
-    }
+    },
+    page: 1
 }
 
 
 const rootReducer = (state=initialState, action)=>{
     switch (action.type){
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+                recipeDetail:[]
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                page:action.payload
+            }
         case GET_REQUEST:
             return {
                 ...state,
@@ -36,7 +47,8 @@ const rootReducer = (state=initialState, action)=>{
                 errors:{
                     request: '',
                     search:''
-                }
+                },
+                page:1
               }
         case GET_RECIPE_BY_ID:
             return {

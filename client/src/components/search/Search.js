@@ -1,15 +1,17 @@
 import React, { useState }from 'react'
 import '../navbar/navbar.css'
-import { connect } from 'react-redux';
-import { getRecipesByName } from '../../redux/actions';
+import { useDispatch } from 'react-redux'
+import { getRecipesByName, setCurrentPage } from '../../redux/actions';
 import lupa from '../../img/lupa.png';
 
 const Search = (props) => {
+  const dispatch = useDispatch()
     const [word,setWord] = useState('');
 
     const handleSubmit = ()=>{
-    props.getRecipesByName(word)
+    dispatch(getRecipesByName(word))
     setWord("")
+    dispatch(setCurrentPage(1))
   }
 
   return (
@@ -27,11 +29,5 @@ const Search = (props) => {
       </div>
   )
 }
-
-function mapDispatchToProps(dispatch){
-    return {
-      getRecipesByName:(word)=> dispatch(getRecipesByName(word))
-    }
-  }
   
-  export default connect(null,mapDispatchToProps)(Search)
+  export default Search
