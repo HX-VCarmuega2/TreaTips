@@ -4,6 +4,7 @@ import LandingPage from './pages/landingPage/LandingPage.js'
 import HomePage from "./pages/homePage/HomePage";
 import DetailPage from "./pages/detailPage/DetailPage"
 import PostPage from "./pages/postPage/PostPage";
+import LoginPage from "./pages/loginPage/LoginPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/home" element={<HomePage />}/>
         <Route path="/recipe/:id" element={<DetailPage />}/>
         <Route path='/post' element={<PostPage />} />
+        <Route path='/login' element={<LoginPage />} />
       </Routes>
         
     </Router>

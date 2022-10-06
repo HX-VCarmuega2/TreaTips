@@ -2,7 +2,7 @@ const axios = require('axios')
 const { MY_API_KEY } = process.env;
 const { Recipe, Diet } = require('../../db.js');
 
-const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&addRecipeInformation=true&number=100`
+const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&addRecipeInformation=true&number=10`
 
 function generateRecipeFromApi(objeto){
     const {id,title,image,summary,diets, dishTypes,spoonacularScore,healthScore,analyzedInstructions} = objeto;
