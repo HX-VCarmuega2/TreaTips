@@ -4,7 +4,7 @@ const { Op, Recipe, Diet } = require('../../db.js');
 const { joinRecipes, match } = require('../controllers/controllers.js')
 const router = Router();
 
-router.post('/', async (req,res)=>{
+router.post('/', async (req,res,next)=>{
     const {title, summary, diets, directions, score, healthScore } = req.body;
 
     if(!title || !summary) return res.status(404).send({msg:'Mandatory information is missing. Check title and summary'})
@@ -25,14 +25,12 @@ router.post('/', async (req,res)=>{
         if(diets.length > 0){
             try {
                 diets.map(async(diet)=>{
-                    await Diet.findOrCreate({
-                        where:{name:diet}
-                    })
-                    recipe.addDiets(diet)
+                    await recipe.addDiets(diet)
                 })
                 return res.status(201).json({msg:'Recipe created successfully'}) 
             } catch (error) {
-                return res.status(404).json(error) 
+                res.status(404).json(error)
+                // next(error)
             }
         }
         res.status(201).json({msg:'Recipe created successfully'})
