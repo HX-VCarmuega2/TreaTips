@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import {
   orderRecipes,
   filterRecipes,
   getAllRecipes,
   setCurrentPage,
+  getAllDiets,
 } from "../../redux/actions";
 import "./filter.css";
 
@@ -12,20 +13,10 @@ const Filter = (props) => {
 
   const dispatch = useDispatch();
   const recipes = useSelector(state=>state.recipes)
+  const diets = useSelector(state=>state.diets)
   const [btn, setBtn] = useState({
     order: false,
     filter: false,
-  });
-
-  const diets = [];
-
-  recipes.length && recipes.forEach((recipe) => {
-    recipe.diets.forEach((diet) => {
-      let newDiet = diet.name;
-      if (!diets.includes(newDiet)) {
-        diets.push(newDiet);
-      }
-    });
   });
 
   function showBtn(prop) {
@@ -115,16 +106,16 @@ const Filter = (props) => {
           <div className="filter__underline"></div>
           <div className={btn.filter ? "filter__order-btnContainer" : "hide"}>
             <ul>
-              {diets.map((diet) => {
+              {diets && diets.map((diet) => {
                 return (
-                  <li key={diet}>
+                  <li key={diet.id}>
                     <button
                       className="filter__btn"
                       name="filter"
-                      value={diet}
+                      value={diet.id}
                       onClick={(e) => handleClick(e)}
                     >
-                      {diet}
+                      {diet.name}
                     </button>
                   </li>
                 );
