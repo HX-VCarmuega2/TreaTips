@@ -19,7 +19,7 @@ const Filter = (props) => {
 
   const diets = [];
 
-  recipes.forEach((recipe) => {
+  recipes.length && recipes.forEach((recipe) => {
     recipe.diets.forEach((diet) => {
       let newDiet = diet.name;
       if (!diets.includes(newDiet)) {
