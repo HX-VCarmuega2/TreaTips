@@ -5,7 +5,7 @@ import Pagination from "../../components/pagination/Pagination";
 import Filter from "../../components/filters/Filter";
 import Displayer from "../../components/displayer/Displayer";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipes } from "../../redux/actions";
+import { getAllDiets, getAllRecipes } from "../../redux/actions";
 import Modal from "../../components/modal/Modal";
 import error from "../../img/errorConexion.jpg";
 import "./homePage.css";
@@ -20,6 +20,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getAllRecipes());
+    dispatch(getAllDiets())
   }, [dispatch]);
 
   const state = useSelector((state) => state);
