@@ -19,9 +19,11 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const { createDiets } = require('./src/routes/controllers/dietControllers.js');
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: false }).then(async() => {
+  await createDiets()
   server.listen(process.env.PORT || 3001, () => {
     console.log(`server is listening at ${process.env.PORT || 3001}`); // eslint-disable-line no-console
   });

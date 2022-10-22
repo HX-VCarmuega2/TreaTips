@@ -6,18 +6,13 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('recipe', {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-        // get(){
-        //   const rawId = this.getDataValue('id');
-        //   return  "DB" + rawId;
-        // },
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey:true
     },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-      primaryKey:true
     },
     summary: {
       type: DataTypes.TEXT,
