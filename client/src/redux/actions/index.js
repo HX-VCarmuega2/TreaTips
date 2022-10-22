@@ -64,6 +64,7 @@ export const getAllDiets = ()=>{
         dispatch(gettingData())
         try {
             const response = await axios.get(URL_TWO);
+            console.log(response)
             const diets = response.data;
             dispatch({
                 type: GET_ALL_DIETS,
