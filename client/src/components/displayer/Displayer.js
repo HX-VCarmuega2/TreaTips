@@ -30,7 +30,7 @@ const Displayer = () => {
               <div className='displayer__underline'></div>
             </div>
             <div className='displayer__display-container'>
-             {recipes.map((recipe)=>{return(
+             {recipes.length && recipes.map((recipe)=>{return(
                 <Display key={recipe.id} recipe={recipe}/>
               )})}
             </div>
