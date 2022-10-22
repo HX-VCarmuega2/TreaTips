@@ -107,7 +107,7 @@ const Filter = (props) => {
 {console.log(diets)}
           <div className={btn.filter ? "filter__order-btnContainer" : "hide"}>
             <ul>
-              {diets && diets.map((diet) => {
+              {diets.length && diets.map((diet) => {
                 return (
                   <li key={diet.id}>
                     <button
