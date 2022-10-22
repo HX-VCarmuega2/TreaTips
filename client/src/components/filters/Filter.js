@@ -104,6 +104,7 @@ const Filter = (props) => {
         <div className={"filter__order-type"}>
           <h4 onClick={() => showBtn("filter")}>Filter</h4>
           <div className="filter__underline"></div>
+{console.log(diets)}
           <div className={btn.filter ? "filter__order-btnContainer" : "hide"}>
             <ul>
               {diets && diets.map((diet) => {
