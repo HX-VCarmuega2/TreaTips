@@ -80,8 +80,23 @@ const createRecipe = async (recipeData, diets)=>{
         }
     }
 }
+
+const searchRecipe = async (id)=>{
+    const recipes = await joinRecipes();
+    let recipeFiltered;
+    if(Number(id)){
+        recipeFiltered = recipes.find(recipe => recipe.id === Number(id));
+    }
+    else {
+        recipeFiltered = recipes.find(recipe => recipe.id === id); 
+    }
+    if (recipeFiltered) return recipeFiltered;
+        else throw new Error(`The id ${id} does not correspond to a recipe`)
+}
+
 module.exports = {
     joinRecipes,
     match,
-    createRecipe
+    createRecipe,
+    searchRecipe
 }
