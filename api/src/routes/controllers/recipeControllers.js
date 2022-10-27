@@ -1,4 +1,5 @@
 const axios = require('axios')
+require('dotenv').config();
 const { MY_API_KEY } = process.env;
 const { Recipe, Diet } = require('../../db.js');
 

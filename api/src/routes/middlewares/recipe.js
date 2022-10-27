@@ -25,8 +25,8 @@ router.get('/', async(req,res)=>{
             
         }
         res.status(200).json(recipes)   
-    } catch (error) {
-        res.status(404).json({error: err.message})
+    } catch (err) {
+        res.status(404).json(err)
     }
 })
 

@@ -5,57 +5,56 @@ import { useDispatch, useSelector } from 'react-redux'
 import './pagination.css'
 
 const Pagination = () => {
-
   const dispatch= useDispatch()
-
   const recipes = useSelector(state => state.recipes)
-  // const recipesToDisplay = useSelector(state => state.recipesToDisplay)
   const currentPage = useSelector(state => state.page)
   
+  const pages = Math.ceil(recipes.length/elements);
+  
+  const buttons = [];
+  
+  for(let i=1; i<=pages; i++){
+    buttons.push(i)
+  }
 
+  function handleClick(e){
+    const page = parseInt(e.target.innerText);
+    console.log(currentPage)
+    dispatch(setCurrentPage(page))
+    dispatch(displayRecipes(page))
+  }
+
+  function prevClick(){
+    console.log(currentPage)
+    const page = currentPage;
+    if(page === 1){
+      return;
+    } else {
+      dispatch(setCurrentPage(page-1))
+      dispatch(displayRecipes(page-1))
+    }
+  }
+  
+  function nextClick(){
+    console.log(currentPage)
+    const page = currentPage;
+    if(page === pages){
+      return
+    } else {
+      dispatch(setCurrentPage(page+1))
+      dispatch(displayRecipes(page+1))
+    }
+  }
     
-    const pages = Math.ceil(recipes.length/elements);
-    const buttons = [];
-    for(let i=1; i<=pages; i++){
-        buttons.push(i)
+  function addClass (el){
+    if (currentPage<7 && el<7){
+      return 'pagination__btn'
     }
-
-    function handleClick(e){
-        const page = parseInt(e.target.innerText);
-        dispatch(setCurrentPage(page))
-        dispatch(displayRecipes(page))
+    else if (currentPage>6 && el>6){
+      return 'pagination__btn'
     }
-
-    function prevClick(){
-      const page = currentPage;
-      if(page === 1){
-        return;
-      } else {
-        dispatch(setCurrentPage(page-1))
-        dispatch(displayRecipes(page))
-      }
-      
-    }
-
-    function nextClick(){
-      const page = currentPage;
-      if(page === pages){
-        return
-      } else {
-        dispatch(setCurrentPage(page+1))
-        dispatch(displayRecipes(page))
-      }
-      
-    }
-    function addClass (el){
-      if (currentPage<7 && el<7){
-        return 'pagination__btn'
-      }
-      else if (currentPage>6 && el>6){
-        return 'pagination__btn'
-      }
-      else return 'hide'
-    }
+    else return 'hide'
+  }
 
     return (
     <div className={recipes.length > 0? 'pagination__container' : 'hide'}>
