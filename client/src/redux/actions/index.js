@@ -1,6 +1,6 @@
 import axios from 'axios'
 export const URL = '/recipes'
-export const URL_TWO = '/types'
+export const URL_TWO = '/diets'
 
 export const GET_ALL_RECIPES = 'GET_ALL_RECIPES';
 export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'

@@ -106,13 +106,13 @@ const Filter = (props) => {
           <div className="filter__underline"></div>
           <div className={btn.filter ? "filter__order-btnContainer" : "hide"}>
             <ul>
-              {diets && diets.map((diet) => {
+              {diets.length && diets.map((diet) => {
                 return (
                   <li key={diet.id}>
                     <button
                       className="filter__btn"
                       name="filter"
-                      value={diet.id}
+                      value={diet.name}
                       onClick={(e) => handleClick(e)}
                     >
                       {diet.name}

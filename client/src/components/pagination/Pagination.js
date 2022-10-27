@@ -32,7 +32,7 @@ const Pagination = () => {
         return;
       } else {
         dispatch(setCurrentPage(page-1))
-        dispatch(displayRecipes(page))
+        dispatch(displayRecipes(page-1))
       }
       
     }
@@ -43,7 +43,7 @@ const Pagination = () => {
         return
       } else {
         dispatch(setCurrentPage(page+1))
-        dispatch(displayRecipes(page))
+        dispatch(displayRecipes(page+1))
       }
       
     }

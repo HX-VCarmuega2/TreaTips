@@ -30,7 +30,7 @@ const Form = () => {
           setResult(response.data.msg);
         })
         .catch(function (error) {
-          setResult(error);
+          setResult(error.message);
         });
 
       setModal(true);
