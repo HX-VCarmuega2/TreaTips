@@ -9,7 +9,7 @@ const router = Router();
 
 // Configurar los routers
 router.use('/recipes',middlewareRecipe)
-router.use('/types',middlewareDiet)
+router.use('/diets',middlewareDiet)
 router.use('/auth', middlewareAuth)
 
 module.exports = router;
