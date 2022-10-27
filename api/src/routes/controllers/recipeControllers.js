@@ -69,7 +69,34 @@ const match = (array,name)=>{
     return filterElements
 }
 
+const createRecipe = async (recipeData, diets)=>{
+    const newRecipe = await Recipe.create(recipeData);
+    if(diets.length > 0){
+        try {
+           await newRecipe.addDiets(diets)
+        return { message: "Recipe created successfully" } 
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+const searchRecipe = async (id)=>{
+    const recipes = await joinRecipes();
+    let recipeFiltered;
+    if(Number(id)){
+        recipeFiltered = recipes.find(recipe => recipe.id === Number(id));
+    }
+    else {
+        recipeFiltered = recipes.find(recipe => recipe.id === id); 
+    }
+    if (recipeFiltered) return recipeFiltered;
+        else throw new Error(`The id ${id} does not correspond to a recipe`)
+}
+
 module.exports = {
     joinRecipes,
-    match
+    match,
+    createRecipe,
+    searchRecipe
 }
