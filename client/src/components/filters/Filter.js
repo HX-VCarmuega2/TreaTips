@@ -113,7 +113,7 @@ const Filter = (props) => {
                     <button
                       className="filter__btn"
                       name="filter"
-                      value={diet.id}
+                      value={diet.name}
                       onClick={(e) => handleClick(e)}
                     >
                       {diet.name}
