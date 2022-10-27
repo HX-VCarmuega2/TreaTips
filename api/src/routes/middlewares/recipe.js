@@ -1,41 +1,17 @@
 const { Router } = require('express');
 // const { where } = require('sequelize/types');
 const { Op, Recipe, Diet } = require('../../db.js');
-const { joinRecipes, match } = require('../controllers/controllers.js')
+const { joinRecipes, match, createRecipe } = require('../controllers/controllers.js')
 const router = Router();
+const { validateInput } = require('../validators/recipeValidator')
 
 router.post('/', async (req,res,next)=>{
-    const {title, summary, diets, directions, score, healthScore } = req.body;
-
-    if(!title || !summary) return res.status(404).send({msg:'Mandatory information is missing. Check title and summary'})
-
-    if(!Number(score)|| !Number(healthScore)) return res.status(404).send({msg:'Check the data types: score and health score must be of type Number'})
-    
-    if(!Array.isArray(diets)) return res.status(404).send({msg:'Check the data types: diets must be of type Array'})
-
-    const newRecipe = {
-        title,
-        summary,
-        score,
-        healthScore,
-        directions,
-    }
     try{
-        const recipe = await Recipe.create(newRecipe);
-        if(diets.length > 0){
-            try {
-                diets.map(async(diet)=>{
-                    await recipe.addDiets(diet)
-                })
-                return res.status(201).json({msg:'Recipe created successfully'}) 
-            } catch (error) {
-                res.status(404).json(error)
-                // next(error)
-            }
-        }
-        res.status(201).json({msg:'Recipe created successfully'})
-    } catch(error){
-        res.status(404).json({err: error})
+        validateInput(req.body)
+        const response = await createRecipe(req.body, req.body.diets)
+        res.status(201).json(response)
+    } catch(err){
+        res.status(404).json({error: err.message})
     }
 })
 
