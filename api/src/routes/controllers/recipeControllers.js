@@ -2,7 +2,7 @@ const axios = require('axios')
 const { MY_API_KEY } = process.env;
 const { Recipe, Diet } = require('../../db.js');
 
-const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&addRecipeInformation=true&number=100`
+const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&addRecipeInformation=true&number=10`
 
 function generateRecipeFromApi(objeto){
     const {id,title,image,summary,diets, dishTypes,spoonacularScore,healthScore,analyzedInstructions} = objeto;
@@ -69,7 +69,34 @@ const match = (array,name)=>{
     return filterElements
 }
 
+const createRecipe = async (recipeData, diets)=>{
+    const newRecipe = await Recipe.create(recipeData);
+    if(diets.length > 0){
+        try {
+           await newRecipe.addDiets(diets)
+        return { message: "Recipe created successfully" } 
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+const searchRecipe = async (id)=>{
+    const recipes = await joinRecipes();
+    let recipeFiltered;
+    if(Number(id)){
+        recipeFiltered = recipes.find(recipe => recipe.id === Number(id));
+    }
+    else {
+        recipeFiltered = recipes.find(recipe => recipe.id === id); 
+    }
+    if (recipeFiltered) return recipeFiltered;
+        else throw new Error(`The id ${id} does not correspond to a recipe`)
+}
+
 module.exports = {
     joinRecipes,
-    match
+    match,
+    createRecipe,
+    searchRecipe
 }
