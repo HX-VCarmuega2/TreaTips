@@ -3,7 +3,7 @@
     justify-content: center;
 }
 
-.pagination__btn {
+.pagination__btn-active {
     background-color: var(--verde);
     border: none;
     color: white;
@@ -11,7 +11,20 @@
     padding: .5rem;
     border-radius: 5px;
     cursor: pointer;
+    
 }
+
+.pagination__btn {
+    background-color: transparent;
+    border: none;
+    color: var(--verde);
+    margin: .3rem;
+    padding: .5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 .hide {
     display: none;
 }
