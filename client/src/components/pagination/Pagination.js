@@ -2,7 +2,7 @@ import { usePagination } from 'components/customHooks/usePagination'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import './pagination.css'
-import { addBtnPaginationClass } from 'utils/utils'
+import { addBtnPaginationClass } from '../../utils/utils'
 
 const Pagination = () => {
   const recipes = useSelector(state => state.recipes)
