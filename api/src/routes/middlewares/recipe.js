@@ -33,7 +33,7 @@ router.get('/', async(req,res)=>{
 router.get('/:id', async(req,res)=>{
     const { id } = req.params;
     try {
-        const recipe = searchRecipe(id)
+        const recipe = await searchRecipe(id)
         res.status(200).json(recipe)
     } catch (err) {
         res.status(404).json({error: err.message})
