@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { joinRecipes, match, createRecipe, searchRecipe } = require('../controllers/recipeControllers.js')
+const { joinRecipes, match, createRecipe, searchRecipe, filterRecipesByDiets } = require('../controllers/recipeControllers.js')
 const router = Router();
 const { validateInput } = require('../validators/recipeValidator')
 
@@ -14,26 +14,38 @@ router.post('/', async (req,res)=>{
 })
 
 router.get('/', async(req,res)=>{
-    const {name} = req.query;
+    const {name, dietOne, dietTwo, dietThree} = req.query;
     try {
-        const recipes = await joinRecipes();
+        let recipes = await joinRecipes();
+
         if(name){
-            const recipesFiltered = match(recipes,name)
-            if(recipesFiltered.length > 0){
-                return res.status(200).json(recipesFiltered)
-            } else return res.status(404).json({error:'No recipes found'})
-            
+            recipes = match(recipes,name)
         }
-        res.status(200).json(recipes)   
+       
+        if(dietOne){
+            recipes = filterRecipesByDiets(recipes, dietOne)
+        }
+        if(dietTwo){
+            recipes = filterRecipesByDiets(recipes, dietTwo)
+        }
+        if(dietThree){
+            recipes = filterRecipesByDiets(recipes, dietThree)
+        }
+
+        if(recipes.length){
+            res.status(200).json(recipes)
+        } else {
+            res.status(404).json({error: 'No recipes found'})
+        }
     } catch (error) {
-        res.status(404).json({error: err.message})
+        res.status(404).json({error: error.message})
     }
 })
 
 router.get('/:id', async(req,res)=>{
     const { id } = req.params;
     try {
-        const recipe = searchRecipe(id)
+        const recipe = await searchRecipe(id)
         res.status(200).json(recipe)
     } catch (err) {
         res.status(404).json({error: err.message})

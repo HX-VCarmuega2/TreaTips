@@ -95,9 +95,22 @@ const searchRecipe = async (id)=>{
         else throw new Error(`The id ${id} does not correspond to a recipe`)
 }
 
+const filterRecipesByDiets = (recipes,diet)=>{
+    let filterRecipes = []
+    recipes.map(recipe => {
+        recipe.diets.forEach(element => {
+            if(element.name === diet){
+                filterRecipes.push(recipe)
+            }
+        });
+    })
+    return filterRecipes
+}
+
 module.exports = {
     joinRecipes,
     match,
     createRecipe,
-    searchRecipe
+    searchRecipe,
+    filterRecipesByDiets
 }
